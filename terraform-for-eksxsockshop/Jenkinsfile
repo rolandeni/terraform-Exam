@@ -10,9 +10,13 @@ pipeline {
         stage("Create an EKS Cluster") {
             steps {
                 script {
-                    dir('terraform') {
-                        sh "terraform init"
-                        sh "terraform apply -auto-approve"
+                    dir('terraform-for-eksxsockshop') {
+                        dir('terraform'){
+                            sh "terraform init"
+                            sh "terraform apply -auto-approve"
+        
+                        }
+                       
                     }
                 }
             }
@@ -20,11 +24,17 @@ pipeline {
         stage("Deploy to EKS") {
             steps {
                 script {
-                    dir('kubernetes') {
-                        sh "aws eks update-kubeconfig --name myapp-eks-cluster"
-                        sh "kubectl apply -f complete-demo.yaml"
-                        sh "kubectl apply -f manifests-monitoring"
+                    dir('terraform-for-eksxsockshop'){
+                        dir('kubernetes'){
+                            sh "aws eks update-kubeconfig --name myapp-eks-cluster"
+                            sh "kubectl apply -f complete-demo.yaml"
+                            sh "kubectl apply -f manifests-monitoring"
+                            sh "kubectl apply -f portfolio.yaml"
+                            sh "kubectl get deployments,svc"
+                        }
+
                     }
+                        
                 }
             }
         }

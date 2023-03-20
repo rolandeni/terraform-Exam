@@ -1,5 +1,5 @@
 # Terraform-Exam
-contains IAC scripts to ochestrate jenkins then create a k8 cluster. also deploy sockshop to the cluster and deploy portfolio app to cluster.
+Contains IAC scripts to ochestrate jenkins then create a k8 cluster. also deploy sockshop to the cluster and deploy portfolio app to cluster.
 
 
 Kubernetes Cluster with Jenkins.
@@ -21,5 +21,9 @@ Test the pipeline: Once you have created the pipeline, you can test it to make s
 
 using the Jenkins pipeline script, i also implemented monitoring tools such as Prometheus and grafana to monitor the state and health of the cluster.
 
-
-
+screenshot of some successful stages
+1. after succesfully running the jenkins pipeline script for cluster cretion, sockshop deployment and monitoring tools.
+![jenkins](images/image1.png)
+![jenkins](images/image2.png)
+![jenkins](images/image3.png)
+![jenkins](images/image4.png)
