@@ -13,7 +13,7 @@ pipeline {
                     dir('terraform-for-eksxsockshop') {
                         dir('terraform'){
                             sh "terraform init"
-                            
+                            sh "terraform apply -auto-approve"
         
                         }
                        
@@ -28,7 +28,7 @@ pipeline {
                         dir('kubernetes'){
                             sh "aws eks update-kubeconfig --name myapp-eks-cluster"
                             sh "kubectl apply -f complete-demo.yaml"
-                            sh "kubectl get svc"
+                            sh "kubectl get all -n my-sock-shop"
                             sh "kubectl apply -f manifests-monitoring"
                             sh "kubectl apply -f portfolio.yaml"
                             sh "kubectl get deployments,svc"
