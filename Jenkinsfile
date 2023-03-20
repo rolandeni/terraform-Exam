@@ -31,7 +31,7 @@ pipeline {
                             sh "kubectl get all -n my-sock-shop"
                             sh "kubectl apply -f manifests-monitoring"
                             sh "kubectl apply -f portfolio.yaml"
-                            sh "kubectl get deployments,svc"
+                            
                         }
 
                     }
