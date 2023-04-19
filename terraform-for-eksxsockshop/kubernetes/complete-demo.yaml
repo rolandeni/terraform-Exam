@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: carts
-        image: weaveworksdemos/carts
+        image: weaveworksdemos/carts:0.4.8
         env:
          - name: JAVA_OPTS
            value: -Xms64m -Xmx128m -XX:+UseG1GC -Djava.security.egd=file:/dev/urandom -Dspring.zipkin.enabled=false
@@ -310,7 +310,7 @@ metadata:
     name: front-end
   namespace: sock-shop
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - port: 80
     targetPort: 8079
@@ -887,4 +887,3 @@ spec:
     targetPort: 27017
   selector:
     name: user-db
-
